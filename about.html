@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>About Us | PureWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Integration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ea580c', // Orange
+                        primaryHover: '#c2410c', // Darker Orange for hover
+                        darkBg: '#0f0f0f',
+                        darkHeader: '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+      /* Hide scrollbar when mobile menu is open */
+      .menu-open { overflow: hidden; position: fixed; width: 100%; height: 100%; }
+      /* Dropdown hover logic for desktop */
+      .group:hover .group-hover\:block { display: block; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 text-lg transition-colors duration-300 dark:bg-darkBg dark:text-white">
+
+    <!-- ---------- HEADER & NAVIGATION ---------- -->
+    <header
+        class="sticky top-0 w-full bg-white shadow-sm dark:bg-darkHeader dark:shadow-gray-900 z-[1000] px-4 md:px-8 py-4 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 no-underline">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                    </svg>
+                </div>
+                <span class="text-3xl font-bold tracking-tight text-black dark:text-white">Pure<span
+                        class="text-primary">Wave</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden xl:flex items-center gap-8 list-none">
+                <li class="relative group py-2">
+                    <a href="#" id="navHome"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base flex items-center gap-1.5">
+                        Home <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 opacity-100 z-[100]">
+                        <li><a href="index.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                1</a></li>
+                        <li><a href="home2.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" id="navAbout"
+                        class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors text-base">About</a>
+                </li>
+                <li><a href="service.html" id="navService"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Service</a>
+                </li>
+                <li><a href="soulful sip.html" id="navSoulful"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Soulful
+                        Sips</a></li>
+                <li><a href="waterritual.html" id="navwaterritual"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Water
+                        Ritual</a></li>
+                <li><a href="contact.html" id="navContact"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Contact</a>
+                </li>
+                <li class="relative group py-2">
+                    <a href="#" id="navDashboard"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base flex items-center gap-1.5">
+                        Dashboard <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 z-[100]">
+                        <li><a href="user.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">User
+                                Dashboard</a></li>
+                        <li><a href="admin.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Admin
+                                Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Header Actions -->
+            <div class="hidden xl:flex items-center gap-4">
+                <a href="login.html"
+                    class="px-6 py-2.5 rounded-full text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all">Login</a>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-lg hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="darkToggleBtn">🌙</button>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="rtlToggleBtn">LTR</button>
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button
+                class="xl:hidden flex flex-col justify-between w-9 h-6 bg-transparent border-none cursor-pointer z-[1001]"
+                id="hamburgerBtn" aria-label="Menu">
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ---------- MOBILE MENU WITH OVERLAY ---------- -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998] opacity-0 invisible transition-all duration-300"
+        id="mobileOverlay"></div>
+
+    <!-- UPDATED MOBILE MENU CONTAINER FOR RTL FIX -->
+    <div class="fixed top-0 right-0 rtl:left-0 rtl:right-auto w-[85%] max-w-sm h-screen bg-white dark:bg-darkHeader z-[1001] px-8 pt-20 pb-8 overflow-y-auto shadow-2xl transition-transform duration-300 ease-in-out translate-x-full rtl:-translate-x-full"
+        id="mobileMenu">
+
+        <button
+            class="absolute top-5 right-6 rtl:left-6 rtl:right-auto text-3xl text-primary w-12 h-12 flex items-center justify-center rounded-full hover:bg-primary/10 transition-colors"
+            id="closeMenuBtn">✕</button>
+
+        <ul class="flex flex-col gap-5 list-none">
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown1">
+                    <span class="text-xl font-medium text-gray-900 dark:text-white" id="mobileHomeText">Home</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown1">
+                    <a href="index.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 1</a>
+                    <a href="home2.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 2</a>
+                </div>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="about.html"
+                    class="block py-3 text-xl font-bold text-primary transition-colors">About</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="service.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Service</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="soulful sip.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Soulful
+                    Sips</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="waterritual.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Water
+                    Ritual</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="contact.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Contact</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown2">
+                    <span class="text-xl font-medium text-gray-900 dark:text-white"
+                        id="mobileDashboardText">Dashboard</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown2">
+                    <a href="user.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">User
+                        Dashboard</a>
+                    <a href="admin.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Admin
+                        Dashboard</a>
+                </div>
+            </li>
+
+            <li class="py-5">
+                <div class="flex gap-4 mb-5">
+                    <a href="login.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors">Login</a>
+                    <a href="signup.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold bg-primary text-white hover:bg-primaryHover transition-colors">Sign
+                        Up</a>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileDarkToggle">🌙 Dark</button>
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileRtlToggle">LTR</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <section
+        class="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center text-center isolate overflow-hidden">
+        <div class="absolute inset-0 z-[-2] bg-cover bg-center bg-fixed"
+            style="background-image: url('images/water (1).jpg');">
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/80 to-black/80 z-[-1]"></div>
+
+        <div class="max-w-4xl mx-auto text-white z-10 px-6">
+            <div class="text-base md:text-lg tracking-[5px] mb-5 opacity-90 font-bold uppercase">Our Journey</div>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                Committed to <br>
+                <span class="block font-normal italic text-[4.5rem] md:text-[6.5rem] text-orange-100">Purity &
+                    Health.</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">Discover the story behind PureWave and our
+                steadfast mission to bring safe, healthy hydration to every community we serve.</p>
+        </div>
+    </section>
+    
+
+    <section class="py-20 md:py-28 bg-white dark:bg-darkBg transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-4 bg-primary/20 rounded-3xl transform -rotate-3 scale-105 z-0 transition-transform group-hover:rotate-0 duration-500">
+                    </div>
+                    <img src="images/water (2).jpg"
+                        alt="PureWave Laboratory"
+                        class="relative z-10 w-full rounded-3xl shadow-2xl object-cover h-[500px]">
+                    <div
+                        class="absolute -bottom-8 -left-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl z-20 border-r-4 border-primary hidden md:block">
+                        <h3 class="text-4xl font-bold text-gray-900 dark:text-white">15+</h3>
+                        <p class="text-gray-500 dark:text-gray-400 font-medium">Years of Innovation</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">The PureWave
+                        Origin</h4>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">How A Drop Evolved
+                        Into A Wave</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 leading-relaxed">
+                        Founded in 2011, PureWave began with a simple but profound observation: accessing truly pure,
+                        mineral-rich drinking water was becoming increasingly difficult for everyday households. Our
+                        founders, a team of passionate engineers and environmentalists, set out to change that.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+                        What started as a small workshop experimenting with Reverse Osmosis (RO) membranes has now grown
+                        into a nationwide leader in water purification technology. Today, we are proud to combine
+                        cutting-edge filtration with seamless, tech-driven service to ensure your water is never
+                        compromised.
+                    </p>
+                    <div class="flex items-center gap-6 pt-6 border-t border-gray-100 dark:border-gray-800">
+                        <img src="images/peopel (1).jpg"
+                            alt="Founder" class="w-16 h-16 rounded-full border-2 border-primary">
+                        <div>
+                            <h5 class="text-xl font-bold text-gray-900 dark:text-white">David Reynolds</h5>
+                            <p class="text-primary font-medium">Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="relative py-24 bg-black overflow-hidden isolate">
+        <div class="absolute inset-0 z-[-2] bg-cover bg-center opacity-40 mix-blend-overlay"
+            style="background-image: url('images/water (5).jpg');">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-[-1]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-8 relative z-10 text-center">
+            <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">The Numbers Speak
+            </h4>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-16">Our Impact By The Numbers</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-700">
+                <div class="px-4 py-6">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-4">10M+</div>
+                    <p class="text-gray-300 font-medium text-lg">Liters Purified Daily</p>
+                </div>
+                <div class="px-4 py-6">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-4">50k</div>
+                    <p class="text-gray-300 font-medium text-lg">Happy Families</p>
+                </div>
+                <div class="px-4 py-6">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-4">35k</div>
+                    <p class="text-gray-300 font-medium text-lg">Active AMC Plans</p>
+                </div>
+                <div class="px-4 py-6">
+                    <div class="text-5xl md:text-6xl font-bold text-primary mb-4">120+</div>
+                    <p class="text-gray-300 font-medium text-lg">Service Centers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 md:py-28 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Our Purpose</h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Driving the Future of Hydration
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 shadow-xl group">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-10 dark:opacity-20 transition-transform duration-700 group-hover:scale-110"
+                        style="background-image: url('images/water (3).jpg');">
+                    </div>
+                    <div class="relative z-10 p-12 h-full flex flex-col justify-center">
+                        <div
+                            class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-lg">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                            To engineer and deliver the most advanced, reliable, and eco-friendly water purification
+                            systems. We are dedicated to providing unparalleled customer service through our modern
+                            digital dashboard, ensuring that maintaining your family's health is completely effortless.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-3xl bg-gray-900 shadow-xl group">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-20 transition-transform duration-700 group-hover:scale-110"
+                        style="background-image: url('images/water (4).jpg');">
+                    </div>
+                    <div class="relative z-10 p-12 h-full flex flex-col justify-center">
+                        <div
+                            class="w-20 h-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center text-primary text-3xl mb-8 shadow-lg">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-6">Our Vision</h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            To create a world where every household has instant access to 100% pure, mineral-optimized
+                            drinking water, eliminating the reliance on single-use plastics and fundamentally
+                            transforming how communities view and consume their daily hydration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-28 bg-white dark:bg-darkBg transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">What Drives Us
+                </h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Our Core Values</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg">The foundational principles that guide every product
+                    we design and every service call we make.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-t-4 border-primary hover:-translate-y-2 transition-transform shadow-sm hover:shadow-xl">
+                    <i class="fa-solid fa-droplet text-4xl text-primary mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Uncompromising Purity</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">We never cut corners when it comes to
+                        filtration. If it isn't 100% safe, it doesn't leave our factory.</p>
+                </div>
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-t-4 border-primary hover:-translate-y-2 transition-transform shadow-sm hover:shadow-xl">
+                    <i class="fa-solid fa-handshake-angle text-4xl text-primary mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Customer First</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Our service dashboard and 24/7 AMC support
+                        network are built entirely around your convenience.</p>
+                </div>
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-t-4 border-primary hover:-translate-y-2 transition-transform shadow-sm hover:shadow-xl">
+                    <i class="fa-solid fa-lightbulb text-4xl text-primary mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Continuous Innovation</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">From zero-water-wastage systems to AI-driven
+                        filter alerts, we are constantly pushing boundaries.</p>
+                </div>
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-t-4 border-primary hover:-translate-y-2 transition-transform shadow-sm hover:shadow-xl">
+                    <i class="fa-solid fa-leaf text-4xl text-primary mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Sustainability</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">We actively work to reduce plastic waste and
+                        optimize power consumption in all our RO models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-28 bg-orange-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">The Minds Behind
+                    PureWave</h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Meet Our Leadership Team</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="images/peopel (2).jpg"
+                            alt="Elena Rostova"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Elena Rostova</h3>
+                        <p class="text-primary font-medium mb-4">Chief Operating Officer</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Oversees nationwide service center
+                            operations and ensures flawless AMC execution.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="images/peopel (3).jpg"
+                            alt="Marcus Chen"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Marcus Chen</h3>
+                        <p class="text-primary font-medium mb-4">Lead Filtration Engineer</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">The mastermind behind our 9-stage RO+UV
+                            mineral enhancement technology.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="images/peopel (4).jpg"
+                            alt="Sarah Jenkins"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6 gap-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"
+                                class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-white hover:text-primary transition-colors"><i
+                                    class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Sarah Jenkins</h3>
+                        <p class="text-primary font-medium mb-4">Head of Customer Success</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Dedicated to making your digital dashboard
+                            and service booking experience seamless.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer class="bg-black text-gray-300 pt-20 pb-10 border-t-4 border-primary px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                        </svg>
+                    </div>
+                    <span class="text-3xl font-bold tracking-tight text-white">Pure<span
+                            class="text-primary">Wave</span></span>
+                </div>
+                <p class="text-gray-400 mb-8 text-base leading-relaxed">Advanced RO technology and trusted maintenance.
+                    Delivering the safest water to your home and office.</p>
+                <div class="flex gap-5">
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">QuickLinks</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="index.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Home</a></li>
+                    <li><a href="contact.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Contact</a></li>
+                    <li><a href="about.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">About</a></li>
+                    <li><a href="service.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Service</a></li>
+                    <li><a href="signup.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Signup</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">Connect</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Support</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Service
+                            Centers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Careers</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Commercial
+                            Solutions</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">MailBox</h4>
+                <p class="text-gray-400 text-base mb-6">Subscribe for filter replacement reminders & exclusive deals.
+                </p>
+                <div class="flex border-b-2 border-gray-700 pb-3 focus-within:border-primary transition-colors">
+                    <input type="email" placeholder="Your email address"
+                        class="bg-transparent border-none text-white w-full outline-none text-base placeholder-gray-500">
+                    <button
+                        class="bg-transparent border-none text-primary font-bold cursor-pointer hover:text-white transition-colors text-2xl">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto mt-14 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 text-base text-gray-500">
+            <span>© 2026 PureWave Solutions. All rights reserved.</span>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                <a href="#" class="hover:text-primary transition-colors">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            (function () {
+                // Dark Mode Logic
+                const darkToggles = [document.getElementById('darkToggleBtn'), document.getElementById('mobileDarkToggle')];
+
+                const setDark = (isOn) => {
+                    if (isOn) {
+                        document.documentElement.classList.add('dark');
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        document.body.classList.remove('dark-mode');
+                    }
+                    localStorage.setItem('darkMode', isOn);
+
+                    darkToggles.forEach(btn => {
+                        if (!btn) return;
+                        if (btn.id === 'mobileDarkToggle') {
+                            btn.innerHTML = isOn ? '☀️ Light' : '🌙 Dark';
+                        } else {
+                            btn.innerHTML = isOn ? '☀️' : '🌙';
+                        }
+                    });
+                };
+
+                if (localStorage.getItem('darkMode') === 'true') setDark(true);
+
+                darkToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setDark(!document.documentElement.classList.contains('dark')));
+                });
+
+                // RTL Logic
+                const rtlToggles = [document.getElementById('rtlToggleBtn'), document.getElementById('mobileRtlToggle')];
+
+                const setRTL = (isRtl) => {
+                    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+                    localStorage.setItem('rtlMode', isRtl);
+                    rtlToggles.forEach(btn => {
+                        if (!btn) return;
+                        btn.innerText = isRtl ? 'RTL' : 'LTR';
+                    });
+                };
+
+                if (localStorage.getItem('rtlMode') === 'true') setRTL(true);
+
+                rtlToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+                });
+
+                // Mobile Menu Logic (UPDATED FOR RTL FIX)
+                const hamburger = document.getElementById('hamburgerBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                const overlay = document.getElementById('mobileOverlay');
+                const closeMenu = document.getElementById('closeMenuBtn');
+
+                const toggleMobile = (open) => {
+                    if (open) {
+                        document.body.classList.add('menu-open');
+                        overlay.classList.remove('opacity-0', 'invisible');
+                        overlay.classList.add('opacity-100', 'visible');
+
+                        // Switch off the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-full', 'rtl:-translate-x-full');
+                        mobileMenu.classList.add('translate-x-0');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                        overlay.classList.add('opacity-0', 'invisible');
+                        overlay.classList.remove('opacity-100', 'visible');
+
+                        // Return to the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-0');
+                        mobileMenu.classList.add('translate-x-full', 'rtl:-translate-x-full');
+                    }
+                };
+
+                hamburger?.addEventListener('click', () => toggleMobile(true));
+                closeMenu?.addEventListener('click', () => toggleMobile(false));
+                overlay?.addEventListener('click', () => toggleMobile(false));
+
+                // Mobile Dropdowns
+                document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const targetId = toggle.getAttribute('data-dropdown');
+                        const content = document.getElementById(targetId);
+                        if (content) {
+                            content.classList.toggle('max-h-[350px]');
+                            content.classList.toggle('max-h-0');
+                            const arrow = toggle.querySelector('span:last-child');
+                            if (arrow) arrow.style.transform = content.classList.contains('max-h-[350px]') ? 'rotate(180deg)' : '';
+                        }
+                    });
+                });
+
+            })();
+    </script>
+</body>
+
+</html>

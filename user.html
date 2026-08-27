@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>PureWave · User Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc; /* Changed to match PureWave */
+      color: #1e293b;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark Mode Styles - Adjusted to PureWave brand */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .stat-card,
+    body.dark-mode .chart-card,
+    body.dark-mode .data-table,
+    body.dark-mode .settings-form,
+    body.dark-mode .product-card {
+      background: #1a1a1a;
+      border-color: #2d2d3a;
+    }
+
+    body.dark-mode .stat-value,
+    body.dark-mode .card-header h3,
+    body.dark-mode .page-title h1,
+    body.dark-mode .product-title,
+    body.dark-mode .form-group label {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .stat-label,
+    body.dark-mode .page-title p,
+    body.dark-mode .product-stock,
+    body.dark-mode .activity-time {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .stat-icon {
+      background: rgba(234, 88, 12, 0.2); /* Orange primary */
+    }
+
+    body.dark-mode th,
+    body.dark-mode td {
+      color: #e2e8f0;
+      border-bottom-color: #2d2d3a;
+    }
+
+    body.dark-mode .search-bar {
+      background: #2a2a35;
+      border-color: #3a3a4a;
+    }
+
+    body.dark-mode .search-bar input {
+      background: transparent;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .action-btn {
+      background: #2a2a35;
+      border-color: #3a3a4a;
+      color: #ea580c;
+    }
+
+    body.dark-mode .action-btn:hover {
+      background: #ea580c;
+      color: white;
+    }
+
+    body.dark-mode .status-completed { background: #166534; color: #86efac; }
+    body.dark-mode .status-pending { background: #854d0e; color: #fde047; }
+    body.dark-mode .status-processing { background: #1e40af; color: #93c5fd; }
+
+    body.dark-mode .activity-icon {
+      background: rgba(234, 88, 12, 0.2);
+    }
+
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group select {
+      background: #2a2a35;
+      border-color: #3a3a4a;
+      color: #f1f5f9;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background-color: #ffffff;
+      color: #1e293b;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      transform: translateX(0);
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #eef2ff;
+    }
+
+    body.dark-mode .sidebar {
+      background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+      color: #f1f5f9;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 1001;
+      }
+      .sidebar.mobile-open {
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    .sidebar-overlay.active {
+      display: block;
+    }
+    body.sidebar-open {
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eef2ff;
+    }
+
+    body.dark-mode .sidebar-header {
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* 100% same logo styling from Login / Admin */
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: #ea580c;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke-width: 1.5;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      text-decoration: none;
+      letter-spacing: -0.025em;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
+    }
+
+    .logo-text span {
+      color: #ea580c;
+    }
+
+    .nav-menu {
+      padding: 1.5rem 0;
+    }
+
+    .nav-item {
+      list-style: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1.5rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 0 12px 12px 0;
+    }
+
+    body.rtl-active .nav-link {
+      border-radius: 12px 0 0 12px;
+    }
+
+    .nav-link:hover {
+      background: rgba(234, 88, 12, 0.08);
+      color: #ea580c;
+    }
+
+    .nav-link.active {
+      background: #ea580c;
+      color: white;
+    }
+
+    .nav-link i {
+      width: 24px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1.5rem;
+      margin: 1rem 0 1.5rem 0;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-top: 1px solid #eef2ff;
+    }
+
+    body.dark-mode .sidebar-action-btn {
+      border-top-color: rgba(255,255,255,0.05);
+      color: #cbd5e1;
+    }
+
+    .sidebar-action-btn:hover {
+      background: rgba(234, 88, 12, 0.08);
+      color: #ea580c;
+    }
+
+    body.dark-mode .sidebar-action-btn:hover {
+      color: #ea580c;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 280px;
+      padding: 1.5rem 2rem;
+      transition: margin-left 0.3s ease;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+        padding-top: 70px;
+      }
+    }
+
+    /* RTL Support */
+    body.rtl-active {
+      direction: rtl;
+    }
+
+    body.rtl-active .sidebar {
+      left: auto;
+      right: 0;
+      border-right: none;
+      border-left: 1px solid #eef2ff;
+    }
+
+    body.dark-mode.rtl-active .sidebar {
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+
+    body.rtl-active .main-content {
+      margin-left: 0;
+      margin-right: 280px;
+    }
+
+    @media (max-width: 768px) {
+      body.rtl-active .main-content {
+        margin-right: 0;
+      }
+      body.rtl-active .sidebar {
+        transform: translateX(100%);
+      }
+      body.rtl-active .sidebar.mobile-open {
+        transform: translateX(0);
+      }
+      body.rtl-active .menu-toggle {
+        left: auto;
+        right: 1rem;
+      }
+    }
+
+    /* Mobile Menu Toggle Button */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1100;
+      background: #ea580c;
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: all 0.2s;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.05);
+      background: #c2410c;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Page Container */
+    .page-container {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page-container.active-page {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Top Header */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .top-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+      }
+    }
+
+    .page-title h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    body.dark-mode .page-title h1 {
+      color: #f1f5f9;
+    }
+
+    @media (max-width: 480px) {
+      .page-title h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .page-title p {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .header-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        width: 100%;
+      }
+      .search-bar input {
+        width: 100%;
+      }
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      width: 200px;
+      background: transparent;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .toggle-buttons {
+        justify-content: center;
+      }
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #ea580c;
+      background: transparent;
+      color: #ea580c;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .text-btn {
+      font-size: 14px;
+      font-weight: 600;
+      width: auto;
+      border-radius: 40px;
+      padding: 0 16px;
+    }
+
+    .icon-btn:hover {
+      background: #ea580c;
+      color: #fff;
+    }
+
+    body.dark-mode .icon-btn {
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+
+    body.dark-mode .icon-btn:hover {
+      background: #fbbf24;
+      color: #1a1a1a;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background: #ea580c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.2rem;
+      transition: transform 0.2s;
+      border: 1px solid #eef2ff;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(234, 88, 12, 0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .stat-icon i {
+      font-size: 1.4rem;
+      color: #ea580c;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .stat-label {
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Charts Section */
+    .charts-section {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .charts-section {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .charts-section {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #eef2ff;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    /* Progress Items */
+    .top-product-item {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .top-product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .top-product-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .top-product-sales {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #ea580c;
+    }
+
+    .progress-bar-container {
+      background: #e2e8f0;
+      border-radius: 10px;
+      height: 6px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: #ea580c;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* Tables */
+    .data-table {
+      background: white;
+      border-radius: 20px;
+      padding: 1.2rem;
+      border: 1px solid #eef2ff;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    @media (max-width: 640px) {
+      table {
+        min-width: 100%;
+      }
+      th, td {
+        padding: 0.6rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #eef2ff;
+    }
+
+    th {
+      font-weight: 600;
+      color: #475569;
+      font-size: 0.8rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .status-completed { background: #dcfce7; color: #166534; }
+    .status-pending { background: #fef9c3; color: #854d0e; }
+    .status-processing { background: #dbeafe; color: #1e40af; }
+
+    /* Cards Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #eef2ff;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .product-price {
+      color: #ea580c;
+      font-weight: 600;
+    }
+
+    .product-stock {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .quick-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+    .action-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      font-weight: 600;
+      color: #ea580c;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .action-btn:hover {
+      background: #ea580c;
+      color: white;
+      border-color: #ea580c;
+    }
+
+    /* Activity Items */
+    .activity-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    body.dark-mode .activity-item {
+      border-bottom-color: #2d2d3a;
+    }
+
+    .activity-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(234, 88, 12, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .activity-icon i {
+      color: #ea580c;
+    }
+
+    .activity-content p {
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .activity-time {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    /* Settings Form */
+    .settings-form {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #eef2ff;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      font-family: inherit;
+    }
+
+    .save-btn {
+      background: #ea580c;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .save-btn {
+        width: 100%;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #ea580c; border-radius: 3px; }
+    
+  </style>
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <!-- Exact PureWave Logo size from Login Page -->
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+            </svg>
+          </div>
+          <a href="index.html" style="text-decoration: none;"><span class="logo-text">Pure<span>Wave</span></span></a>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item" data-page="dashboard"><a class="nav-link active"><i class="fas fa-house"></i><span>Home</span></a></li>
+        <li class="nav-item" data-page="devices"><a class="nav-link"><i class="fas fa-glass-water"></i><span>My Purifiers</span></a></li>
+        <li class="nav-item" data-page="services"><a class="nav-link"><i class="fas fa-wrench"></i><span>Service History</span></a></li>
+        <li class="nav-item" data-page="amc"><a class="nav-link"><i class="fas fa-shield-halved"></i><span>AMC Plan</span></a></li>
+        <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-user-cog"></i><span>Account Settings</span></a></li>
+      </ul>
+      <a href="login.html" class="sidebar-action-btn" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div id="dashboard-page" class="page-container active-page"></div>
+      <div id="devices-page" class="page-container"></div>
+      <div id="services-page" class="page-container"></div>
+      <div id="amc-page" class="page-container"></div>
+      <div id="settings-page" class="page-container"></div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // ---------- DATA adapted for PureWave User Dashboard ----------
+    const serviceHistory = [
+      { id: '#SRV-101', type: 'Filter Replacement', date: '2024-02-15', status: 'Completed', tech: 'Mike T.' },
+      { id: '#SRV-102', type: 'General Servicing', date: '2023-10-10', status: 'Completed', tech: 'John D.' },
+      { id: '#SRV-103', type: 'Installation', date: '2023-04-12', status: 'Completed', tech: 'Steve R.' }
+    ];
+    
+    const activeRequests = [
+      { id: '#SRV-104', type: 'Breakdown Repair', date: 'Scheduled for Tomorrow', status: 'Processing', tech: 'Assigned (Mike T.)' }
+    ];
+    
+    const myDevices = [
+      { id: 1, name: 'PureWave RO Advanced', serial: 'PW-RO-8941', installDate: '12 Apr 2023', status: 'Active', nextService: '12 Oct 2024' }
+    ];
+    
+    const filterStatus = [
+      { name: 'Pre-Filter', remaining: 15, percent: 15 },
+      { name: 'Carbon Filter', remaining: 45, percent: 45 },
+      { name: 'RO Membrane', remaining: 80, percent: 80 }
+    ];
+    
+    const activitiesFeed = [
+      { icon: 'wrench', text: 'Service request #SRV-104 confirmed for Tomorrow 10 AM', time: '2 hours ago' },
+      { icon: 'shield', text: 'AMC Comprehensive Plan renewed successfully', time: '1 week ago' },
+      { icon: 'filter', text: 'Filter replacement completed', time: '2 months ago' }
+    ];
+    
+    // Toggle Functions
+    function toggleDarkMode() { 
+      document.body.classList.toggle('dark-mode'); 
+      localStorage.setItem('pureWave_darkMode', document.body.classList.contains('dark-mode'));
+      const darkIcon = document.getElementById('darkModeIconBtn');
+      if(darkIcon) darkIcon.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    }
+    
+    function toggleRTL() { 
+      document.body.classList.toggle('rtl-active'); 
+      localStorage.setItem('pureWave_rtl', document.body.classList.contains('rtl-active'));
+      const rtlBtn = document.getElementById('rtlIconBtn');
+      if(rtlBtn) rtlBtn.innerHTML = document.body.classList.contains('rtl-active') ? 'RTL' : 'LTR';
+    }
+    
+    function closeSidebar() { 
+      sidebar.classList.remove('mobile-open'); 
+      overlay.classList.remove('active'); 
+      document.body.classList.remove('sidebar-open');
+    }
+    
+    function openSidebar() { 
+      sidebar.classList.add('mobile-open'); 
+      overlay.classList.add('active'); 
+      document.body.classList.add('sidebar-open');
+    }
+    
+    window.showPage = function(pageId) {
+      const pages = ['dashboard', 'devices', 'services', 'amc', 'settings'];
+      pages.forEach(p => document.getElementById(`${p}-page`).classList.remove('active-page'));
+      document.getElementById(`${pageId}-page`).classList.add('active-page');
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelector(`[data-page="${pageId}"] .nav-link`).classList.add('active');
+      if(window.innerWidth <= 768) closeSidebar();
+    };
+    
+    // Render Functions
+    function renderDashboard() {
+      const dashboardDiv = document.getElementById('dashboard-page');
+      dashboardDiv.innerHTML = `
+        <div class="top-header">
+          <div class="page-title"><h1>Welcome Back, Sarah!</h1><p>Here is the status of your water purifiers</p></div>
+          <div class="header-actions">
+            <div class="toggle-buttons">
+              <button class="icon-btn" id="darkModeIconBtn">🌙</button>
+              <button class="icon-btn text-btn" id="rtlIconBtn">LTR</button>
+            </div>
+            <div class="user-profile"><div class="user-avatar">S</div></div>
+          </div>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-glass-water"></i></div><div class="stat-value">1</div><div class="stat-label">Registered Devices</div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:rgba(22, 101, 52, 0.1);"><i class="fas fa-shield-halved" style="color:#166534;"></i></div><div class="stat-value" style="font-size:1.4rem;">Active</div><div class="stat-label">AMC Status</div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-check"></i></div><div class="stat-value" style="font-size:1.4rem;">Oct 12</div><div class="stat-label">Next Service Due</div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-wrench"></i></div><div class="stat-value">1</div><div class="stat-label">Active Request</div></div>
+        </div>
+        
+        <div class="quick-actions">
+          <button class="action-btn" onclick="alert('Booking form opened')"><i class="fas fa-calendar-plus"></i> Book Service</button>
+          <button class="action-btn" onclick="showPage('amc')"><i class="fas fa-star"></i> Renew AMC</button>
+          <button class="action-btn"><i class="fas fa-headset"></i> Support</button>
+        </div>
+        
+        <div class="charts-section">
+          <!-- Filter Life Card -->
+          <div class="chart-card">
+            <div class="card-header"><h3>Filter Health Status</h3><span style="color:#ea580c; font-size:0.8rem;">PureWave RO Advanced</span></div>
+            <div id="filterStatusList"></div>
+            <p style="font-size: 0.8rem; color: #64748b; margin-top: 1rem;"><i class="fas fa-info-circle"></i> Pre-filter replacement recommended soon.</p>
+          </div>
+          
+          <!-- Active Request Card -->
+          <div class="chart-card">
+            <div class="card-header"><h3>Active Request</h3></div>
+            ${activeRequests.map(r => `
+              <div style="border: 1px solid #eef2ff; padding: 1rem; border-radius: 12px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom: 0.5rem;">
+                  <strong>${r.type}</strong> <span class="status-badge status-processing">${r.status}</span>
+                </div>
+                <p style="font-size:0.85rem; color:#64748b; margin-bottom: 0.2rem;"><i class="fas fa-calendar mr-1"></i> ${r.date}</p>
+                <p style="font-size:0.85rem; color:#64748b;"><i class="fas fa-user-gear mr-1"></i> Tech: ${r.tech}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="data-table">
+          <div class="card-header"><h3>Recent Service History</h3><a href="#" style="color:#ea580c; font-size:0.8rem;" onclick="showPage('services'); return false;">View All →</a></div>
+          <div id="recentOrdersTable"></div>
+        </div>
+      `;
+      
+      document.getElementById('filterStatusList').innerHTML = filterStatus.map(p => `
+        <div class="top-product-item">
+          <div class="top-product-header">
+            <span class="top-product-name">${p.name}</span>
+            <span class="top-product-sales" style="color: ${p.percent < 20 ? '#dc2626' : '#ea580c'}">${p.remaining}%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: ${p.percent}%; background-color: ${p.percent < 20 ? '#dc2626' : '#ea580c'};"></div>
+          </div>
+        </div>
+      `).join('');
+      
+      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Req ID</th><th>Service Type</th><th>Date</th><th>Status</th></tr></thead><tbody>${serviceHistory.slice(0,3).map(o => `<tr><td>${o.id}</td><td>${o.type}</td><td>${o.date}</td><td><span class="status-badge status-completed">${o.status}</span></td></tr>`).join('')}</tbody></table>`;
+      
+      // Re-attach toggles
+      document.getElementById('darkModeIconBtn')?.addEventListener('click', toggleDarkMode);
+      document.getElementById('rtlIconBtn')?.addEventListener('click', toggleRTL);
+    }
+    
+    function renderDevices() {
+      document.getElementById('devices-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>My Purifiers</h1><p>Devices registered to your account</p></div><div class="header-actions"><button class="action-btn" style="width:auto;"><i class="fas fa-plus"></i> Register New Device</button></div></div>
+        <div class="products-grid" id="devicesGrid"></div>
+      `;
+      
+      document.getElementById('devicesGrid').innerHTML = myDevices.map(d => `
+        <div class="product-card">
+          <div class="product-info">
+            <div class="product-title">${d.name}</div>
+            <div class="product-stock" style="margin-bottom: 1rem;">Serial: ${d.serial}</div>
+            <div style="font-size:0.85rem; margin-bottom: 0.4rem;"><strong>Installed:</strong> ${d.installDate}</div>
+            <div style="font-size:0.85rem; margin-bottom: 1rem;"><strong>Next Service:</strong> <span style="color:#ea580c">${d.nextService}</span></div>
+            <span class="status-badge status-completed">${d.status}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderServices() {
+      document.getElementById('services-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Service History</h1><p>Past maintenance and repair visits</p></div></div>
+        <div class="data-table"><table><thead><tr><th>Request ID</th><th>Type</th><th>Date</th><th>Technician</th><th>Status</th><th>Certificate</th></tr></thead><tbody>${serviceHistory.map(s => `<tr><td>${s.id}</td><td>${s.type}</td><td>${s.date}</td><td>${s.tech}</td><td><span class="status-badge status-completed">${s.status}</span></td><td><button style="background:transparent; border:none; color:#ea580c; cursor:pointer;" title="Download PDF"><i class="fas fa-download"></i></button></td></tr>`).join('')}</tbody></table></div>
+      `;
+    }
+    
+    function renderAMC() {
+      document.getElementById('amc-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>AMC Plan Details</h1><p>Manage your annual maintenance contract</p></div></div>
+        <div class="chart-card" style="max-width: 600px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #eef2ff; padding-bottom: 1rem; margin-bottom: 1rem;">
+            <div>
+              <h2 style="font-size: 1.4rem; font-weight: 700;">Comprehensive Plan</h2>
+              <p style="color:#166534; font-weight:600; font-size:0.9rem; margin-top:0.3rem;"><i class="fas fa-check-circle"></i> Active</p>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:2rem; font-weight:700; color:#ea580c;">$199</span><span style="font-size:0.8rem; color:#64748b;">/year</span>
+            </div>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <p style="font-size:0.9rem; margin-bottom: 0.5rem;"><strong>Valid Until:</strong> 11 Oct 2024</p>
+            <p style="font-size:0.9rem; margin-bottom: 0.5rem;"><strong>Visits Remaining:</strong> 2</p>
+          </div>
+          <h4 style="font-size:0.95rem; margin-bottom: 0.8rem;">Plan Covers:</h4>
+          <ul style="list-style:none; padding:0; font-size:0.9rem; color:#475569; display:flex; flex-direction:column; gap:0.5rem; margin-bottom: 1.5rem;">
+            <li><i class="fas fa-check" style="color:#ea580c; width:20px;"></i> 4 Scheduled Visits</li>
+            <li><i class="fas fa-check" style="color:#ea580c; width:20px;"></i> All filters replaced annually</li>
+            <li><i class="fas fa-check" style="color:#ea580c; width:20px;"></i> Free RO Membrane</li>
+            <li><i class="fas fa-check" style="color:#ea580c; width:20px;"></i> Zero visit charges on breakdowns</li>
+          </ul>
+          <button class="action-btn" style="width:100%;">Renew Plan Now</button>
+        </div>
+      `;
+    }
+    
+    function renderSettings() { 
+      document.getElementById('settings-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Account Settings</h1><p>Update your personal details</p></div></div>
+        <div class="settings-form" style="max-width: 600px;">
+          <h3 style="margin-bottom:1rem;">Profile Information</h3>
+          <div class="form-group"><label>Full Name</label><input type="text" value="Sarah Johnson"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" value="sarah@example.com"></div>
+          <div class="form-group"><label>Phone Number</label><input type="text" value="+1 (555) 123-4567"></div>
+          <div class="form-group"><label>Installation Address</label><input type="text" value="123 Main St, Apt 4B, New York, NY 10001"></div>
+          <button class="save-btn" onclick="alert('Profile updated successfully!')" style="margin-top: 1rem;">Save Changes</button>
+        </div>
+      `; 
+    }
+    
+    // Navigation
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
+    
+    // Mobile sidebar controls
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    menuToggle?.addEventListener('click', () => sidebar.classList.contains('mobile-open') ? closeSidebar() : openSidebar());
+    overlay?.addEventListener('click', closeSidebar);
+    
+    // Load saved preferences
+    if(localStorage.getItem('pureWave_darkMode') === 'true') document.body.classList.add('dark-mode');
+    if(localStorage.getItem('pureWave_rtl') === 'true') document.body.classList.add('rtl-active');
+    
+    // Initialize all pages
+    renderDashboard();
+    renderDevices();
+    renderServices();
+    renderAMC();
+    renderSettings();
+    
+    // Fallback toggles hook
+    setTimeout(() => {
+      document.getElementById('darkModeIconBtn')?.addEventListener('click', toggleDarkMode);
+      document.getElementById('rtlIconBtn')?.addEventListener('click', toggleRTL);
+    }, 100);
+  </script>
+</body>
+</html>

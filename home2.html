@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>PureWave · Water Purifier Sales & Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Integration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ea580c', // Orange
+                        primaryHover: '#c2410c', // Darker Orange for hover
+                        darkBg: '#0f0f0f',
+                        darkHeader: '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+      /* Hide scrollbar when mobile menu is open */
+      .menu-open { overflow: hidden; position: fixed; width: 100%; height: 100%; }
+      /* Dropdown hover logic for desktop */
+      .group:hover .group-hover\:block { display: block; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 text-lg transition-colors duration-300 dark:bg-darkBg dark:text-white">
+
+    <!-- ---------- HEADER & NAVIGATION ---------- -->
+    <header
+        class="sticky top-0 w-full bg-white shadow-sm dark:bg-darkHeader dark:shadow-gray-900 z-[1000] px-4 md:px-8 py-4 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 no-underline">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                    </svg>
+                </div>
+                <span class="text-3xl font-bold tracking-tight text-black dark:text-white">Pure<span
+                        class="text-primary">Wave</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden xl:flex items-center gap-8 list-none">
+                <li class="relative group py-2">
+                    <!-- Added flex, gap, and black chevron icon -->
+                    <a href="#" id="navHome"
+                        class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors text-base flex items-center gap-1.5">
+                        Home <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 opacity-100 z-[100]">
+                        <li><a href="index.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                1</a></li>
+                        <li><a href="home2.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" id="navAbout"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">About</a>
+                </li>
+                <li><a href="service.html" id="navService"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Service</a>
+                </li>
+                <li><a href="soulful sip.html" id="navSoulful"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Soulful
+                        Sips</a></li>
+                <li><a href="waterritual.html" id="navwaterritual"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Water
+                        Ritual</a></li>
+                <li><a href="contact.html" id="navContact"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Contact</a>
+                </li>
+                <li class="relative group py-2">
+                    <!-- Added flex, gap, and black chevron icon -->
+                    <a href="#" id="navDashboard"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base flex items-center gap-1.5">
+                        Dashboard <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 z-[100]">
+                        <li><a href="user.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">User
+                                Dashboard</a></li>
+                        <li><a href="admin.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Admin
+                                Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Header Actions -->
+            <div class="hidden xl:flex items-center gap-4">
+                <a href="login.html"
+                    class="px-6 py-2.5 rounded-full text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all">Login</a>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-lg hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="darkToggleBtn">🌙</button>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="rtlToggleBtn">LTR</button>
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button
+                class="xl:hidden flex flex-col justify-between w-9 h-6 bg-transparent border-none cursor-pointer z-[1001]"
+                id="hamburgerBtn" aria-label="Menu">
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ---------- MOBILE MENU WITH OVERLAY ---------- -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998] opacity-0 invisible transition-all duration-300"
+        id="mobileOverlay"></div>
+
+    <!-- UPDATED MOBILE MENU CONTAINER FOR RTL FIX -->
+    <div class="fixed top-0 right-0 rtl:left-0 rtl:right-auto w-[85%] max-w-sm h-screen bg-white dark:bg-darkHeader z-[1001] px-8 pt-20 pb-8 overflow-y-auto shadow-2xl transition-transform duration-300 ease-in-out translate-x-full rtl:-translate-x-full"
+        id="mobileMenu">
+
+        <button
+            class="absolute top-5 right-6 rtl:left-6 rtl:right-auto text-3xl text-primary w-12 h-12 flex items-center justify-center rounded-full hover:bg-primary/10 transition-colors"
+            id="closeMenuBtn">✕</button>
+
+        <ul class="flex flex-col gap-5 list-none">
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown1">
+                    <span class="text-xl font-bold text-primary" id="mobileHomeText">Home</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown1">
+                    <a href="index.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 1</a>
+                    <a href="home2.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 2</a>
+                </div>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="about.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">About</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="service.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Service</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="soulful sip.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Soulful
+                    Sips</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="waterritual.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Water
+                    Ritual</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="contact.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Contact</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown2">
+                    <span class="text-xl font-medium text-gray-900 dark:text-white"
+                        id="mobileDashboardText">Dashboard</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown2">
+                    <a href="user.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">User
+                        Dashboard</a>
+                    <a href="admin.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Admin
+                        Dashboard</a>
+                </div>
+            </li>
+
+            <!-- Mobile Auth & Toggles -->
+            <li class="py-5">
+                <div class="flex gap-4 mb-5">
+                    <a href="login.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors">Login</a>
+                    <a href="signup.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold bg-primary text-white hover:bg-primaryHover transition-colors">Sign
+                        Up</a>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileDarkToggle">🌙 Dark</button>
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileRtlToggle">LTR</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ---------- HERO SECTION ---------- -->
+    <section
+        class="relative min-h-[85vh] md:min-h-[95vh] flex items-center justify-center text-center isolate overflow-hidden">
+        <!-- Slider Backgrounds -->
+        <div class="absolute inset-0 z-[-2]">
+            <div class="slider-image absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-[1.2s] ease-in-out active:opacity-100"
+                style="background-image: url('images/water (1).jpg');">
+            </div>
+            <div class="slider-image absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-[1.2s] ease-in-out"
+                style="background-image: url('images/water (2).jpg');">
+            </div>
+            <div class="slider-image absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-[1.2s] ease-in-out"
+                style="background-image: url('images/water (3).jpg');">
+            </div>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/60 to-black/70 z-[-1]"></div>
+
+        <!-- Hero Content -->
+        <div class="max-w-4xl mx-auto text-white z-10 px-6">
+            <div class="text-base md:text-lg tracking-[5px] mb-5 opacity-90 font-bold uppercase">PureWave Solutions
+            </div>
+            <h1 class="text-5xl md:text-8xl font-bold leading-tight mb-6">
+                Pure Water. <br>
+                <span class="block font-normal italic text-[4.5rem] md:text-[6.5rem] text-orange-100">Better
+                    Health.</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Book your first service and ensure safe drinking water for
+                your family.</p>
+            <div
+                class="bg-primary/90 backdrop-blur-md inline-block px-10 py-4 rounded-full font-bold text-xl shadow-lg">
+                Use code PURE15 for 15% Off
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-10">
+            <span class="dot w-4 h-4 rounded-full bg-white/50 cursor-pointer transition-all duration-200"></span>
+            <span class="dot w-4 h-4 rounded-full bg-white/50 cursor-pointer transition-all duration-200"></span>
+            <span class="dot w-4 h-4 rounded-full bg-white/50 cursor-pointer transition-all duration-200"></span>
+        </div>
+    </section>
+
+    <!-- ---------- SECTION 1: WHY CHOOSE US (FEATURES) ---------- -->
+    <section class="py-20 md:py-28 bg-white dark:bg-darkBg transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Why Choose
+                    PureWave</h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Next-Generation Water
+                    Purification</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg md:text-xl">We don't just sell water purifiers; we
+                    deliver health, safety, and peace of mind through cutting-edge RO+UV technology and dedicated
+                    service.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border border-transparent hover:border-primary/30 shadow-sm hover:shadow-xl">
+                    <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-droplet text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Advanced RO+UV</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Multi-stage purification removes dissolved
+                        impurities, bacteria, and harsh chemicals instantly.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border border-transparent hover:border-primary/30 shadow-sm hover:shadow-xl">
+                    <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-heart text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Mineral Retention</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Our smart TDS controllers ensure essential
+                        natural minerals remain intact in your drinking water.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border border-transparent hover:border-primary/30 shadow-sm hover:shadow-xl">
+                    <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-leaf text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Zero Wastage</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Eco-friendly technology reduces water waste by
+                        up to 50% compared to traditional RO systems.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border border-transparent hover:border-primary/30 shadow-sm hover:shadow-xl">
+                    <div class="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-headset text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">24/7 Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-base">Book a service via our dashboard anytime. Our
+                        certified technicians respond within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- SECTION 2: PRODUCTS SHOWCASE ---------- -->
+    <section class="py-20 md:py-28 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Our Top
+                        Models</h4>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Find Your Perfect Match
+                    </h2>
+                </div>
+                <a href="products.html"
+                    class="flex-shrink-0 px-8 py-3 rounded-full text-base font-bold bg-primary text-white hover:bg-primaryHover transition-all shadow-lg hover:shadow-primary/30">View
+                    All Products</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="images/water (4).jpg"
+                            alt="PureWave Pro"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Bestseller</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">PureWave Pro Max</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">9-Stage RO + UV + UF + Alkaline</p>
+                        <div
+                            class="flex justify-between items-center mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-2xl font-bold text-primary">$299</span>
+                            <button
+                                class="text-gray-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2">Details
+                                <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="images/water (5).jpg"
+                            alt="PureWave Under-sink"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">PureWave Stealth</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Compact Under-Sink RO System</p>
+                        <div
+                            class="flex justify-between items-center mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-2xl font-bold text-primary">$349</span>
+                            <button
+                                class="text-gray-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2">Details
+                                <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg group">
+                    <div class="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="images/water (6).jpg"
+                            alt="PureWave Commercial"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">PureWave Titan</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">High-Capacity Commercial RO</p>
+                        <div
+                            class="flex justify-between items-center mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-2xl font-bold text-primary">$899</span>
+                            <button
+                                class="text-gray-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2">Details
+                                <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- SECTION 3: SERVICE PROCESS ---------- -->
+    <section class="py-20 md:py-28 bg-white dark:bg-darkBg transition-colors duration-300 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Image Side -->
+            <div class="relative">
+                <div class="absolute -inset-4 bg-primary/20 rounded-3xl transform rotate-3 scale-105 z-0"></div>
+                <img src="images/water (7).jpg"
+                    alt="Technician repairing water purifier"
+                    class="relative z-10 w-full rounded-3xl shadow-2xl object-cover h-[500px]">
+
+                <!-- Floating Badge -->
+                <div
+                    class="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl z-20 border-l-4 border-primary hidden md:block">
+                    <div class="flex items-center gap-4">
+                        <div class="text-4xl text-primary"><i class="fa-solid fa-user-check"></i></div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-white">5,000+</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Happy Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Side -->
+            <div>
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Hassle-Free
+                    Maintenance</h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10">How Our AMC Service Works
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div class="flex gap-6">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold border-2 border-primary">
+                            1</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Book via Dashboard</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Log in to your personalized user dashboard,
+                                select your registered device, and choose a convenient time slot.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex gap-6">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold border-2 border-primary">
+                            2</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Expert Inspection</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Our certified technician arrives on time, tests
+                                the water TDS level, and inspects all internal filters and membranes.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex gap-6">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold border-2 border-primary">
+                            3</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Genuine Filter Change</h3>
+                            <p class="text-gray-600 dark:text-gray-400">We replace pre-filters and carbon filters using
+                                only 100% genuine PureWave certified parts to ensure longevity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- SECTION 4: TESTIMONIALS ---------- -->
+    <section class="py-20 md:py-28 bg-orange-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Customer Stories
+                </h4>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">What Our Families Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div
+                    class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-lg transition-shadow relative">
+                    <i
+                        class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-gray-100 dark:text-gray-700"></i>
+                    <div class="flex text-yellow-400 text-sm mb-6 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg mb-8 relative z-10">"The taste of the water
+                        improved instantly after installing the PureWave Pro Max. The installation team was professional
+                        and left no mess behind."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/peopel (1).jpg"
+                            alt="Sarah J." class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Sarah Jenkins</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-lg transition-shadow relative">
+                    <i
+                        class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-gray-100 dark:text-gray-700"></i>
+                    <div class="flex text-yellow-400 text-sm mb-6 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg mb-8 relative z-10">"I love the user dashboard
+                        feature. Booking my annual maintenance takes literally two clicks, and the technicians always
+                        arrive right on time."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/peopel (2).jpg"
+                            alt="Michael T." class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Michael Torres</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">AMC Subscriber</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    class="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-lg transition-shadow relative">
+                    <i
+                        class="fa-solid fa-quote-right absolute top-8 right-8 text-5xl text-gray-100 dark:text-gray-700"></i>
+                    <div class="flex text-yellow-400 text-sm mb-6 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg mb-8 relative z-10">"Upgraded to the Titan
+                        commercial unit for our office. The water pressure is fantastic, and the support team is always
+                        just a quick phone call away."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/peopel (3).jpg"
+                            alt="Emily R." class="w-14 h-14 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Emily Rossi</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Office Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- SECTION 5: CALL TO ACTION (AMC) ---------- -->
+    <section class="py-24 bg-primary relative overflow-hidden">
+        <!-- Abstract Background Elements -->
+        <div
+            class="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-black opacity-10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 md:px-8 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">Protect Your Family's Health
+                Year-Round</h2>
+            <p class="text-orange-100 text-lg md:text-2xl mb-10 font-medium">Subscribe to our Annual Maintenance
+                Contract (AMC) today. Get 3 free services, zero labor charges, and priority support.</p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="service.html"
+                    class="px-10 py-4 rounded-full text-lg font-bold bg-white text-primary hover:bg-gray-100 hover:scale-105 transition-all shadow-xl w-full sm:w-auto text-center">Explore
+                    AMC Plans</a>
+                <a href="contact.html"
+                    class="px-10 py-4 rounded-full text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-primary transition-all w-full sm:w-auto text-center flex items-center justify-center gap-2"><i
+                        class="fa-solid fa-phone"></i> Contact Support</a>
+            </div>
+
+            <p class="text-white/80 mt-8 text-sm"><i class="fa-solid fa-shield-halved mr-2"></i> 100% Genuine Spare
+                Parts Guaranteed.</p>
+        </div>
+    </section>
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer class="bg-black text-gray-300 pt-20 pb-10 border-t-4 border-primary px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+            <!-- Brand & Social -->
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                        </svg>
+                    </div>
+                    <span class="text-3xl font-bold tracking-tight text-white">Pure<span
+                            class="text-primary">Wave</span></span>
+                </div>
+                <p class="text-gray-400 mb-8 text-base leading-relaxed">Advanced RO technology and trusted maintenance.
+                    Delivering the safest water to your home and office.</p>
+                <div class="flex gap-5">
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <!-- UPDATED TWITTER (X) ICON -->
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">QuickLinks</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="index.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Home</a></li>
+                    <li><a href="contact.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Contact</a></li>
+                    <li><a href="about.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">About</a></li>
+                    <li><a href="service.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Service</a></li>
+                    <li><a href="signup.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Signup</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect Links -->
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">Connect</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Support</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Service
+                            Centers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Careers</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Commercial
+                            Solutions</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">MailBox</h4>
+                <p class="text-gray-400 text-base mb-6">Subscribe for filter replacement reminders & exclusive deals.
+                </p>
+                <div class="flex border-b-2 border-gray-700 pb-3 focus-within:border-primary transition-colors">
+                    <input type="email" placeholder="Your email address"
+                        class="bg-transparent border-none text-white w-full outline-none text-base placeholder-gray-500">
+                    <button
+                        class="bg-transparent border-none text-primary font-bold cursor-pointer hover:text-white transition-colors text-2xl">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div
+            class="max-w-7xl mx-auto mt-14 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 text-base text-gray-500">
+            <span>© 2026 PureWave Solutions. All rights reserved.</span>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                <a href="#" class="hover:text-primary transition-colors">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ---------- JAVASCRIPT ---------- -->
+    <script>
+            (function () {
+                // Dark Mode Logic
+                const darkToggles = [document.getElementById('darkToggleBtn'), document.getElementById('mobileDarkToggle')];
+
+                const setDark = (isOn) => {
+                    if (isOn) {
+                        document.documentElement.classList.add('dark');
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        document.body.classList.remove('dark-mode');
+                    }
+                    localStorage.setItem('darkMode', isOn);
+
+                    darkToggles.forEach(btn => {
+                        if (!btn) return;
+                        if (btn.id === 'mobileDarkToggle') {
+                            btn.innerHTML = isOn ? '☀️ Light' : '🌙 Dark';
+                        } else {
+                            btn.innerHTML = isOn ? '☀️' : '🌙';
+                        }
+                    });
+                };
+
+                if (localStorage.getItem('darkMode') === 'true') setDark(true);
+
+                darkToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setDark(!document.documentElement.classList.contains('dark')));
+                });
+
+                // RTL Logic
+                const rtlToggles = [document.getElementById('rtlToggleBtn'), document.getElementById('mobileRtlToggle')];
+
+                const setRTL = (isRtl) => {
+                    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+                    localStorage.setItem('rtlMode', isRtl);
+                    rtlToggles.forEach(btn => {
+                        if (!btn) return;
+                        btn.innerText = isRtl ? 'RTL' : 'LTR';
+                    });
+                };
+
+                if (localStorage.getItem('rtlMode') === 'true') setRTL(true);
+
+                rtlToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+                });
+
+                // Mobile Menu Logic (UPDATED FOR RTL FIX)
+                const hamburger = document.getElementById('hamburgerBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                const overlay = document.getElementById('mobileOverlay');
+                const closeMenu = document.getElementById('closeMenuBtn');
+
+                const toggleMobile = (open) => {
+                    if (open) {
+                        document.body.classList.add('menu-open');
+                        overlay.classList.remove('opacity-0', 'invisible');
+                        overlay.classList.add('opacity-100', 'visible');
+
+                        // Switch off the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-full', 'rtl:-translate-x-full');
+                        mobileMenu.classList.add('translate-x-0');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                        overlay.classList.add('opacity-0', 'invisible');
+                        overlay.classList.remove('opacity-100', 'visible');
+
+                        // Return to the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-0');
+                        mobileMenu.classList.add('translate-x-full', 'rtl:-translate-x-full');
+                    }
+                };
+
+                hamburger?.addEventListener('click', () => toggleMobile(true));
+                closeMenu?.addEventListener('click', () => toggleMobile(false));
+                overlay?.addEventListener('click', () => toggleMobile(false));
+
+                // Mobile Dropdowns
+                document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const targetId = toggle.getAttribute('data-dropdown');
+                        const content = document.getElementById(targetId);
+                        if (content) {
+                            content.classList.toggle('max-h-[350px]');
+                            content.classList.toggle('max-h-0');
+                            const arrow = toggle.querySelector('span:last-child');
+                            if (arrow) arrow.style.transform = content.classList.contains('max-h-[350px]') ? 'rotate(180deg)' : '';
+                        }
+                    });
+                });
+
+                // Hero Slider Logic
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.slider-image');
+                const dots = document.querySelectorAll('.dot');
+
+                if (slides.length > 0) {
+                    slides[0].classList.add('opacity-100');
+                    slides[0].classList.remove('opacity-0');
+                    dots[0].classList.add('bg-primary', 'scale-125');
+                    dots[0].classList.remove('bg-white/50');
+                }
+
+                const showSlide = (index) => {
+                    slides.forEach((s, i) => {
+                        if (i === index) {
+                            s.classList.add('opacity-100');
+                            s.classList.remove('opacity-0');
+                        } else {
+                            s.classList.remove('opacity-100');
+                            s.classList.add('opacity-0');
+                        }
+                    });
+
+                    dots.forEach((d, i) => {
+                        if (i === index) {
+                            d.classList.add('bg-primary', 'scale-125');
+                            d.classList.remove('bg-white/50');
+                        } else {
+                            d.classList.remove('bg-primary', 'scale-125');
+                            d.classList.add('bg-white/50');
+                        }
+                    });
+                    currentSlide = index;
+                };
+
+                dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+                setInterval(() => {
+                    if (slides.length > 0) {
+                        currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide);
+                    }
+                }, 5000);
+
+            })();
+    </script>
+</body>
+
+</html>

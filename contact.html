@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Contact Us | PureWave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Integration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ea580c', // Orange
+                        primaryHover: '#c2410c', // Darker Orange for hover
+                        darkBg: '#0f0f0f',
+                        darkHeader: '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+      /* Hide scrollbar when mobile menu is open */
+      .menu-open { overflow: hidden; position: fixed; width: 100%; height: 100%; }
+      /* Dropdown hover logic for desktop */
+      .group:hover .group-hover\:block { display: block; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 text-lg transition-colors duration-300 dark:bg-darkBg dark:text-white">
+
+    <!-- ---------- HEADER & NAVIGATION ---------- -->
+    <header
+        class="sticky top-0 w-full bg-white shadow-sm dark:bg-darkHeader dark:shadow-gray-900 z-[1000] px-4 md:px-8 py-4 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 no-underline">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                    </svg>
+                </div>
+                <span class="text-3xl font-bold tracking-tight text-black dark:text-white">Pure<span
+                        class="text-primary">Wave</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden xl:flex items-center gap-8 list-none">
+                <li class="relative group py-2">
+                    <a href="#" id="navHome"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base flex items-center gap-1.5">
+                        Home <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 opacity-100 z-[100]">
+                        <li><a href="index.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                1</a></li>
+                        <li><a href="home2.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Home
+                                2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" id="navAbout"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">About</a>
+                </li>
+                <li><a href="service.html" id="navService"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Service</a>
+                </li>
+                <li><a href="soulful sip.html" id="navSoulful"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Soulful
+                        Sips</a></li>
+                <li><a href="waterritual.html" id="navwaterritual"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base">Water
+                        Ritual</a></li>
+                <!-- Contact Link (ACTIVE) -->
+                <li><a href="contact.html" id="navContact"
+                        class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors text-base">Contact</a>
+                </li>
+                <li class="relative group py-2">
+                    <a href="#" id="navDashboard"
+                        class="text-gray-900 dark:text-white font-medium hover:text-primary dark:hover:text-primary transition-colors text-base flex items-center gap-1.5">
+                        Dashboard <i
+                            class="fa-solid fa-chevron-down text-black dark:text-white text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <ul
+                        class="absolute top-full -left-3 hidden group-hover:block bg-white dark:bg-gray-800 min-w-[200px] rounded-xl shadow-xl py-3 z-[100]">
+                        <li><a href="user.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">User
+                                Dashboard</a></li>
+                        <li><a href="admin.html"
+                                class="block px-6 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary text-base transition-colors">Admin
+                                Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Header Actions -->
+            <div class="hidden xl:flex items-center gap-4">
+                <a href="login.html"
+                    class="px-6 py-2.5 rounded-full text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all">Login</a>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-lg hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="darkToggleBtn">🌙</button>
+                <button
+                    class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary text-sm font-bold hover:bg-primary hover:text-white transition-all dark:hover:bg-primary dark:hover:text-black"
+                    id="rtlToggleBtn">LTR</button>
+            </div>
+
+            <!-- Hamburger Icon -->
+            <button
+                class="xl:hidden flex flex-col justify-between w-9 h-6 bg-transparent border-none cursor-pointer z-[1001]"
+                id="hamburgerBtn" aria-label="Menu">
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+                <span class="w-full h-1 bg-primary rounded-sm transition-all duration-300 dark:bg-white"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ---------- MOBILE MENU WITH OVERLAY ---------- -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998] opacity-0 invisible transition-all duration-300"
+        id="mobileOverlay"></div>
+
+    <div class="fixed top-0 right-0 rtl:left-0 rtl:right-auto w-[85%] max-w-sm h-screen bg-white dark:bg-darkHeader z-[1001] px-8 pt-20 pb-8 overflow-y-auto shadow-2xl transition-transform duration-300 ease-in-out translate-x-full rtl:-translate-x-full"
+        id="mobileMenu">
+
+        <button
+            class="absolute top-5 right-6 rtl:left-6 rtl:right-auto text-3xl text-primary w-12 h-12 flex items-center justify-center rounded-full hover:bg-primary/10 transition-colors"
+            id="closeMenuBtn">✕</button>
+
+        <ul class="flex flex-col gap-5 list-none">
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown1">
+                    <span class="text-xl font-medium text-gray-900 dark:text-white" id="mobileHomeText">Home</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown1">
+                    <a href="index.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 1</a>
+                    <a href="home2.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Home 2</a>
+                </div>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="about.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">About</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="service.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Service</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="soulful sip.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Soulful
+                    Sips</a></li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="waterritual.html"
+                    class="block py-3 text-xl font-medium text-gray-900 dark:text-white hover:text-primary transition-colors">Water
+                    Ritual</a></li>
+            <!-- Mobile Contact (ACTIVE) -->
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2"><a href="contact.html"
+                    class="block py-3 text-xl font-bold text-primary transition-colors">Contact</a>
+            </li>
+            <li class="border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div class="flex justify-between items-center cursor-pointer py-3 mobile-dropdown-toggle"
+                    data-dropdown="dropdown2">
+                    <span class="text-xl font-medium text-gray-900 dark:text-white"
+                        id="mobileDashboardText">Dashboard</span>
+                    <span class="text-primary text-xl transition-transform duration-300">▼</span>
+                </div>
+                <div class="max-h-0 overflow-hidden transition-all duration-300 pl-4 rtl:pl-0 rtl:pr-4" id="dropdown2">
+                    <a href="user.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">User
+                        Dashboard</a>
+                    <a href="admin.html"
+                        class="block py-3 text-lg text-gray-600 dark:text-gray-300 hover:text-primary">Admin
+                        Dashboard</a>
+                </div>
+            </li>
+
+            <li class="py-5">
+                <div class="flex gap-4 mb-5">
+                    <a href="login.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors">Login</a>
+                    <a href="signup.html"
+                        class="flex-1 text-center py-3.5 rounded-full text-lg font-semibold bg-primary text-white hover:bg-primaryHover transition-colors">Sign
+                        Up</a>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileDarkToggle">🌙 Dark</button>
+                    <button
+                        class="flex-1 py-3.5 rounded-full border-2 border-primary text-primary text-lg font-medium hover:bg-primary hover:text-white transition-colors dark:hover:text-black"
+                        id="mobileRtlToggle">LTR</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ---------- CONTACT HERO SECTION ---------- -->
+    <section
+        class="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center text-center isolate overflow-hidden">
+        <!-- Background Image for Contact -->
+        <div class="absolute inset-0 z-[-2] bg-cover bg-center bg-fixed"
+            style="background-image: url('images/water (11).jpg');">
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/80 to-black/80 z-[-1]"></div>
+
+        <div class="max-w-4xl mx-auto text-white z-10 px-6">
+            <div class="text-base md:text-lg tracking-[5px] mb-5 opacity-90 font-bold uppercase">Get In Touch</div>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                We're Here to <br>
+                <span class="block font-normal italic text-[4.5rem] md:text-[6.5rem] text-orange-100">Help.</span>
+            </h1>
+            <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">Have a question about our water purifiers or need maintenance support? Reach out to our dedicated team today.</p>
+        </div>
+    </section>
+
+    <!-- ---------- MAIN CONTENT START ---------- -->
+    <main class="w-full">
+        
+        <!-- SECTION 1: QUICK CONTACT CARDS -->
+        <section class="py-20 md:py-28 bg-white dark:bg-darkBg transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6 md:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h4 class="text-primary font-bold tracking-widest uppercase mb-3 text-sm md:text-base">Direct Access</h4>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">How Can We Assist You?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Whether you need immediate technical support or want to learn more about our AMC plans, our channels are always open.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Support Card -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-primary/30 group">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-headset text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Technical Support</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">For repairs, filter replacements, and AMC.</p>
+                        <a href="tel:+18001234567" class="text-lg font-bold text-primary hover:text-primaryHover">1-800-123-4567</a>
+                    </div>
+
+                    <!-- Sales Card -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-primary/30 group">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-envelope-open-text text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Sales Inquiries</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">Questions about purchasing a new purifier.</p>
+                        <a href="mailto:sales@purewave.com" class="text-lg font-bold text-primary hover:text-primaryHover">sales@purewave.com</a>
+                    </div>
+
+                    <!-- Hours Card -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-primary/30 group">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fa-regular fa-clock text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Business Hours</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">Our team is available 6 days a week.</p>
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">Mon - Sat: 9AM to 7PM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CONTACT FORM & IMAGE SPLIT -->
+        <section class="py-20 md:py-28 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Image Side -->
+                <div class="relative hidden lg:block group h-full">
+                    <div class="absolute -inset-4 bg-primary/20 rounded-3xl transform -rotate-3 scale-105 z-0 transition-transform duration-700 group-hover:rotate-0"></div>
+                    <img src="images/peopel (4).jpg" alt="Customer Support Representative" class="relative z-10 w-full h-full rounded-3xl shadow-2xl object-cover min-h-[600px]">
+                    <div class="absolute bottom-10 -right-10 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl z-20 border-l-4 border-primary">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <p class="text-lg font-bold text-gray-900 dark:text-white">Fast Response</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">Usually replies within 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Side -->
+                <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Send a Message</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8">Fill out the form below and we will get back to you as soon as possible.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                                <input type="tel" placeholder="+1 (555) 000-0000" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Inquiry Type</label>
+                                <select class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none">
+                                    <option>General Inquiry</option>
+                                    <option>New Purifier Purchase</option>
+                                    <option>Schedule AMC Service</option>
+                                    <option>Breakdown / Repair</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Your Message</label>
+                            <textarea rows="4" required placeholder="How can we help you today?" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-primaryHover text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+                            Send Message <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTIVE MAP & HQ DETAILS -->
+        <section class="py-0 relative">
+            <!-- Map Iframe (Full width) -->
+            <div class="w-full h-[500px] md:h-[650px] bg-gray-200 dark:bg-gray-800">
+                <!-- Using a generic map embed centered on a tech/business area. Filter applied for aesthetic blending -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764015000001!3d37.757814999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; filter: grayscale(80%) contrast(1.2) opacity(0.8);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Floating Info Card -->
+            <div class="absolute inset-0 flex items-center max-w-7xl mx-auto px-6 md:px-8 pointer-events-none">
+                <div class="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 max-w-md pointer-events-auto transform ltr:md:-translate-x-0 rtl:md:translate-x-0 mx-auto md:mx-0 mt-20 md:mt-0">
+                    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Visit Our HQ</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 pb-6 border-b border-gray-100 dark:border-gray-800">Experience our latest RO technology in person at our flagship experience center.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Head Office</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">123 Waterway Avenue, Suite 400<br>San Francisco, CA 94105</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Service Center</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Located behind the main building.<br>Drop-ins welcome for quick filter buys.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.google.com" target="_blank" class="mt-8 w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                        Get Directions <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- ---------- MAIN CONTENT END ---------- -->
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer class="bg-black text-gray-300 pt-20 pb-10 border-t-4 border-primary px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 8 12 2 12 2C12 2 2.5 8 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" />
+                        </svg>
+                    </div>
+                    <span class="text-3xl font-bold tracking-tight text-white">Pure<span
+                            class="text-primary">Wave</span></span>
+                </div>
+                <p class="text-gray-400 mb-8 text-base leading-relaxed">Advanced RO technology and trusted maintenance.
+                    Delivering the safest water to your home and office.</p>
+                <div class="flex gap-5">
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-all hover:-translate-y-1 text-lg"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">QuickLinks</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="index.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Home</a></li>
+                    <li><a href="contact.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Contact</a></li>
+                    <li><a href="about.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">About</a></li>
+                    <li><a href="service.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Service</a></li>
+                    <li><a href="signup.html"
+                            class="text-gray-400 hover:text-primary transition-colors text-base">Signup</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">Connect</h4>
+                <ul class="space-y-4 list-none">
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Support</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Service
+                            Centers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Careers</a>
+                    </li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-base">Commercial
+                            Solutions</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold text-xl mb-6 uppercase tracking-wide">MailBox</h4>
+                <p class="text-gray-400 text-base mb-6">Subscribe for filter replacement reminders & exclusive deals.
+                </p>
+                <div class="flex border-b-2 border-gray-700 pb-3 focus-within:border-primary transition-colors">
+                    <input type="email" placeholder="Your email address"
+                        class="bg-transparent border-none text-white w-full outline-none text-base placeholder-gray-500">
+                    <button
+                        class="bg-transparent border-none text-primary font-bold cursor-pointer hover:text-white transition-colors text-2xl">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto mt-14 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 text-base text-gray-500">
+            <span>© 2026 PureWave Solutions. All rights reserved.</span>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                <a href="#" class="hover:text-primary transition-colors">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            (function () {
+                // Dark Mode Logic
+                const darkToggles = [document.getElementById('darkToggleBtn'), document.getElementById('mobileDarkToggle')];
+
+                const setDark = (isOn) => {
+                    if (isOn) {
+                        document.documentElement.classList.add('dark');
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        document.body.classList.remove('dark-mode');
+                    }
+                    localStorage.setItem('darkMode', isOn);
+
+                    darkToggles.forEach(btn => {
+                        if (!btn) return;
+                        if (btn.id === 'mobileDarkToggle') {
+                            btn.innerHTML = isOn ? '☀️ Light' : '🌙 Dark';
+                        } else {
+                            btn.innerHTML = isOn ? '☀️' : '🌙';
+                        }
+                    });
+                };
+
+                if (localStorage.getItem('darkMode') === 'true') setDark(true);
+
+                darkToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setDark(!document.documentElement.classList.contains('dark')));
+                });
+
+                // RTL Logic
+                const rtlToggles = [document.getElementById('rtlToggleBtn'), document.getElementById('mobileRtlToggle')];
+
+                const setRTL = (isRtl) => {
+                    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+                    localStorage.setItem('rtlMode', isRtl);
+                    rtlToggles.forEach(btn => {
+                        if (!btn) return;
+                        btn.innerText = isRtl ? 'RTL' : 'LTR';
+                    });
+                };
+
+                if (localStorage.getItem('rtlMode') === 'true') setRTL(true);
+
+                rtlToggles.forEach(btn => {
+                    btn?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+                });
+
+                // Mobile Menu Logic
+                const hamburger = document.getElementById('hamburgerBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                const overlay = document.getElementById('mobileOverlay');
+                const closeMenu = document.getElementById('closeMenuBtn');
+
+                const toggleMobile = (open) => {
+                    if (open) {
+                        document.body.classList.add('menu-open');
+                        overlay.classList.remove('opacity-0', 'invisible');
+                        overlay.classList.add('opacity-100', 'visible');
+
+                        // Switch off the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-full', 'rtl:-translate-x-full');
+                        mobileMenu.classList.add('translate-x-0');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                        overlay.classList.add('opacity-0', 'invisible');
+                        overlay.classList.remove('opacity-100', 'visible');
+
+                        // Return to the "hidden" translated state
+                        mobileMenu.classList.remove('translate-x-0');
+                        mobileMenu.classList.add('translate-x-full', 'rtl:-translate-x-full');
+                    }
+                };
+
+                hamburger?.addEventListener('click', () => toggleMobile(true));
+                closeMenu?.addEventListener('click', () => toggleMobile(false));
+                overlay?.addEventListener('click', () => toggleMobile(false));
+
+                // Mobile Dropdowns
+                document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const targetId = toggle.getAttribute('data-dropdown');
+                        const content = document.getElementById(targetId);
+                        if (content) {
+                            content.classList.toggle('max-h-[350px]');
+                            content.classList.toggle('max-h-0');
+                            const arrow = toggle.querySelector('span:last-child');
+                            if (arrow) arrow.style.transform = content.classList.contains('max-h-[350px]') ? 'rotate(180deg)' : '';
+                        }
+                    });
+                });
+
+            })();
+    </script>
+</body>
+
+</html>
