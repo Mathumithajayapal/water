@@ -57,27 +57,31 @@
   <div class="absolute top-20 start-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
   <div class="absolute bottom-20 end-10 w-96 h-96 bg-brand-muted/20 dark:bg-white/5 rounded-full blur-3xl animate-pulse pointer-events-none" style="animation-delay: 1.5s;"></div>
 
-  <!-- Theme & RTL Toggles (Top Right) -->
-  <div class="absolute top-4 end-4 sm:top-6 sm:end-8 z-50 flex items-center gap-4">
-    <button id="theme-toggle" class="relative w-[72px] h-[34px] flex items-center bg-gray-200 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-300 dark:border-gray-700 overflow-hidden" title="Toggle Theme">
-      <span class="text-[9px] font-medium text-gray-500 absolute end-2.5 dark:opacity-0 transition-opacity duration-300 tracking-wider">LIGHT</span>
-      <span class="text-[9px] font-medium text-primary absolute start-2.5 opacity-0 dark:opacity-100 transition-opacity duration-300 tracking-wider">DARK</span>
-      
-      <div class="w-[24px] h-[24px] bg-white dark:bg-darkBg border border-gray-200 dark:border-gray-600 rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center rtl:dark:-translate-x-[38px] ltr:dark:translate-x-[38px] dark:translate-x-[38px] z-10">
-        <i class="fas fa-sun text-[11px] text-primary dark:hidden block"></i>
-        <i class="fas fa-moon text-[11px] text-primary hidden dark:block"></i>
-      </div>
-    </button>
-    
-    <button id="rtl-toggle" class="text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300" title="Toggle RTL">
-      RTL
-    </button>
+  <!-- Theme & RTL Toggles (Fixed for Mobile Layout) -->
+  <div class="w-full flex justify-end p-4 z-50 shrink-0 relative">
+    <div class="flex items-center gap-3 bg-white dark:bg-darkHeader shadow-sm rounded-full px-4 py-2 border border-gray-200 dark:border-gray-800">
+      <button id="rtl-toggle" class="text-[10px] font-bold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors uppercase tracking-widest shrink-0" title="Toggle RTL">
+        RTL
+      </button>
+      <div class="w-px h-4 bg-gray-300 dark:bg-gray-700"></div>
+      <button id="theme-toggle" class="relative w-[60px] h-[28px] flex items-center bg-gray-100 dark:bg-[#1E293B] rounded-full p-1 transition-colors duration-300 focus:outline-none border border-gray-200 dark:border-gray-700 shrink-0" title="Toggle Theme">
+        <span class="text-[8px] font-bold text-gray-500 absolute end-2 dark:opacity-0 transition-opacity duration-300">LHT</span>
+        <span class="text-[8px] font-bold text-primary absolute start-2 opacity-0 dark:opacity-100 transition-opacity duration-300">DRK</span>
+        
+        <div class="w-[20px] h-[20px] bg-white dark:bg-darkBg rounded-full shadow-sm transform transition-transform duration-300 flex items-center justify-center rtl:dark:-translate-x-[30px] ltr:dark:translate-x-[30px] dark:translate-x-[30px] z-10">
+          <i class="fas fa-sun text-[10px] text-primary dark:hidden block"></i>
+          <i class="fas fa-moon text-[10px] text-primary hidden dark:block"></i>
+        </div>
+      </button>
+    </div>
   </div>
 
-  <div class="flex-1 overflow-y-auto flex flex-col justify-center items-center p-4">
+  <div class="flex-1 overflow-y-auto flex flex-col items-center px-4">
+    <!-- Top Spacer for safe vertical centering -->
+    <div class="flex-1 shrink-0 min-h-[24px]"></div>
     
     <!-- Main Signup Card -->
-    <div class="w-full max-w-sm bg-white dark:bg-darkHeader shadow-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 relative z-10 animate-fade-in group rounded-2xl my-auto">
+    <div class="w-full max-w-sm bg-white dark:bg-darkHeader shadow-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 relative z-10 animate-fade-in group rounded-2xl shrink-0">
         
         <!-- Top Gradient Border -->
         <div class="absolute top-0 start-0 w-full h-1 bg-gradient-to-r from-primary to-transparent rounded-t-2xl"></div>
@@ -223,6 +227,9 @@
         </div>
 
     </div>
+
+    <!-- Bottom Spacer for safe vertical centering -->
+    <div class="flex-1 shrink-0 min-h-[24px]"></div>
   </div>
 
   <script>
